@@ -1,5 +1,5 @@
 //TASK 1 : NUMBER GUESSING GAME
-import java.lang.System;
+/*import java.lang.System;
 import java.util.Scanner;
 import java.util.Random;
 class hello{
@@ -84,7 +84,7 @@ class c{
             }
         }
     }
-}
+}*/
 //TASK 2 : STUDENT GRADE CALCULATOR 
 /* import java.lang.System;
 import java.util.Scanner;
