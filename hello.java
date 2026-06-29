@@ -1,4 +1,3 @@
-//Respected Sir : All the Five Tasks are present in this hello.java file
 //TASK 1 : NUMBER GUESSING GAME
 /*import java.lang.System;
 import java.util.Scanner;
@@ -85,12 +84,13 @@ class c{
             }
         }
     }
-}*/
+} */
 //TASK 2 : STUDENT GRADE CALCULATOR 
-/* import java.lang.System;
+/*import java.lang.System;
 import java.util.Scanner;
 class hello{
     public static void main(String args[]){
+        hello  h = new hello();
         Scanner k = new Scanner (System.in);
         int a,b,c,d,e;
         while(true){
@@ -146,22 +146,31 @@ class hello{
         int t = (a+b+c+d+e);
         double avg = (((double)(t))/((double)(5)));
         char g;
-        if((avg>=90)&&(avg<=100)){
+        int arr[] = new int[5];
+        arr[0]=a;
+        arr[1]=b;
+        arr[2]=c;
+        arr[3]=d;
+        arr[4]=e;
+        if(((avg>=90)&&(avg<=100))&&(h.allpass(arr))){
             g='O';
         }
-        else if((avg>=80)&&(avg<90)){
+        else if(((avg>=80)&&(avg<90))&&(h.allpass(arr))){
             g='A';
         }
-        else if((avg>=70)&&(avg<80)){
+        else if(((avg>=70)&&(avg<80))&&(h.allpass(arr))){
             g='B';
         }
-        else if((avg>=60)&&(avg<70)){
+        else if(((avg>=60)&&(avg<70))&&(h.allpass(arr))){
             g='C';
         }
-        else if((avg>=50)&&(avg<60)){
+        else if(((avg>=50)&&(avg<60))&&(h.allpass(arr))){
             g='D';
         }
-        else{//avg<50
+        else if(((avg>=40)&&(avg<50))&&(h.allpass(arr))){
+            g='E';
+        }
+        else{//avg<40
             g='F';
         }
         System.out.println("Marks obtained in Tamil : "+a+"/100");
@@ -170,7 +179,7 @@ class hello{
         System.out.println("Marks obtained in Science : "+d+"/100");
         System.out.println("Marks obtained in Social Science : "+e+"/100");
         System.out.println("Total marks obtained : "+t+"/500");
-        System.out.printf("Average marks obtained : %.2f"+avg+"\n");
+        System.out.println("Average marks obtained : "+avg);
         System.out.println("Grade obtained : "+g);
         if(g!='F'){
             System.out.println("Pass");
@@ -179,9 +188,22 @@ class hello{
             System.out.println("Fail");
         }
     }
-}
-*/
-
+    boolean allpass(int arr[]){
+        int dummy=0;
+        for(int i=0;i<5;i++){
+            if(arr[i]<40){
+                dummy++;
+                break;
+            }
+        }
+        if(dummy==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}*/
 //TASK 3 : ATM INTERFACE 
 /*import java.lang.System;
 import java.util.Scanner;
@@ -193,6 +215,8 @@ class hello{
     }
 }
 class atm{
+    int deposit_amount=0;
+    int withdraw_amount=0;
     public void display(Scanner k){
         int ch;
         int amount;
@@ -226,6 +250,7 @@ class atm{
 }
 class user{
     int cash=0;
+    atm obj = new atm();
     public void withdraw(int amount){
         if(amount<=0){
             System.out.println("Invalid Amount");
@@ -234,9 +259,20 @@ class user{
             System.out.println("Withdraw Failed!");
             System.out.println("Insufficient Account Balance!");
         }
+        else if(amount>100000){
+            System.out.println("Withdraw Failed!");
+            System.out.println("Account Withdraw Limit Exceeded!");
+        }
         else{
-            cash=cash-amount;
-            System.out.println("Withdrawn successfully!");
+            obj.withdraw_amount+=amount;
+            if(obj.withdraw_amount>100000){
+                System.out.println("Withdraw Failed!");
+                System.out.println("Acount Withdraw Limit Exceeded!");
+            }
+            else{
+                cash=cash-amount;
+                System.out.println("Withdrawn successfully!");
+            }
         }
     }
     public void deposit(int amount){
@@ -248,18 +284,24 @@ class user{
             System.out.println("Account Deposit Limit Exceeded!");
         }
         else{
-            cash=cash+amount;
-            System.out.println("Deposited successfully!");
+            obj.deposit_amount+=amount;
+            if(obj.deposit_amount>100000){
+                System.out.println("Money deposit failed");
+                System.out.println("Account Deposit Limit Exceeded!");
+            }
+            else{
+                cash=cash+amount;
+                System.out.println("Deposited successfully!");
+            }
         }
     }
     public void checkbalance(){
         System.out.println("Your Balance : "+ cash);
     }
 }
-*/
+ */
 //TASK 4 : CURRRENCY CONVERTER
-/*
-import java.net.*;
+/*import java.net.*;
 import java.net.http.*;
 import java.util.*;
 class hello{
@@ -348,7 +390,7 @@ class hello{
                 System.out.println(" "+to);
             }
             catch(Exception e){
-                //do nothing
+                System.out.println("Error!");
             }
         }
     }
@@ -385,9 +427,9 @@ class hello{
         }
     }
 }
-*/
+ */
 //TASK 5 : STUDENT MANAGEMENT SYSTEM
-/* import java.lang.System;
+import java.lang.System;
 import java.util.*;
 import java.io.*;
 class hello{
@@ -418,9 +460,12 @@ class hello{
             else if(ch==5){
                 smsobj.display();
             }
-            else{
+            else if(ch==6){
                 System.out.println("Thank you!");
                 break;
+            }
+            else{
+                System.out.println("Invalid choice!");
             }
         }        
     }
@@ -665,9 +710,9 @@ class sms{
                         System.out.println("Error ! Name cannot be empty");
                     }
                     else{
-                        l = (s.name).length();
+                        int len = (s.name).length();
                         int dummy=0;
-                        for(i=0;i<l;i++){
+                        for(i=0;i<len;i++){
                             char ch=(s.name).charAt(i);
                             if(((ch>='a')&&(ch<='z'))||((ch>='A')&&(ch<='Z'))){
                                 continue;
@@ -857,7 +902,7 @@ class sms{
             return l;
         }
     }
-}*/
+}
 
 
 
